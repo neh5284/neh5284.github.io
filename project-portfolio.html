@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Platform | Project</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        .project-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem 5rem;
+            text-align: center;
+        }
+
+        .project-content p {
+            font-size: 1rem;
+            color: #374151;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .project-content h2 {
+            font-size: 2.1rem;
+            color: #001e44;
+            margin-top: 5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-link {
+            margin: 2rem 0 4rem;
+            font-size: 1rem;
+        }
+
+        .project-link a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .project-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* CAROUSEL */
+        .carousel {
+            max-width: 850px;
+            margin: 2rem auto 0;
+            text-align: center;
+        }
+
+        .carousel img {
+            width: 100%;
+            max-height: 520px;
+            object-fit: contain;
+            border-radius: 16px;
+
+            background: #1f2937;   /* 🔥 FIXED BACKGROUND */
+            padding: 1.5rem;
+
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .carousel-caption {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: #374151;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .carousel-controls button {
+            background: #0f172a;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: "Poppins", sans-serif;
+            font-weight: 500;
+        }
+
+        .carousel-controls button:hover {
+            opacity: 0.85;
+        }
+
+        .slide-count {
+            margin-top: 0.75rem;
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrapper">
+
+    <nav class="top-nav">
+        <span class="logo">Nathan Hinkle</span>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="resume.html">Resume</a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="short-hero">
+            <h1>Portfolio Platform</h1>
+            <p>Full-Stack Project Management & Portfolio App</p>
+        </section>
+
+        <section class="project-content">
+
+            <p>
+                <strong>Portfolio Platform</strong> is a full-stack web application that allows users to create an account,
+                manage projects, edit profile information, and share a public portfolio page.
+            </p>
+
+            <!-- GITHUB LINK -->
+            <div class="project-link">
+                <strong>GitHub Repo:</strong>
+                <a href="https://github.com/neh5284/hcdd412-Portfol.io-" target="_blank">
+                    View on GitHub →
+                </a>
+            </div>
+
+            <h2>Project Overview</h2>
+            <p>
+                The app separates private dashboard tools from the public portfolio view. Users can log in, add or edit projects,
+                update their profile, and generate a shareable portfolio link.
+            </p>
+
+            <h2>Application Screens</h2>
+            <p>Click through the carousel below to explore the app.</p>
+
+            <!-- CAROUSEL -->
+            <div class="carousel">
+                <img id="carousel-image" src="welcomepage.png" alt="" />
+
+                <p id="carousel-caption" class="carousel-caption"></p>
+
+                <div class="carousel-controls">
+                    <button onclick="prevSlide()">← Previous</button>
+                    <button onclick="nextSlide()">Next →</button>
+                </div>
+
+                <p id="slide-count" class="slide-count"></p>
+            </div>
+
+            <h2>Core Features</h2>
+            <p>
+                User authentication, project management, profile editing, public portfolio pages,
+                and shareable links.
+            </p>
+
+            <h2>What I Built</h2>
+            <p>
+                I implemented authentication, dashboard functionality, project management,
+                and profile editing features while connecting everything to a backend database.
+            </p>
+
+            <h2>Tools Used</h2>
+            <p>
+                React, TypeScript, Supabase, JavaScript, HTML, CSS, and Vite.
+            </p>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Nathan Hinkle •
+            <a href="https://github.com/neh5284" target="_blank">GitHub</a> •
+            <a href="https://www.linkedin.com/in/nathanehinkle/" target="_blank">LinkedIn</a>
+        </p>
+    </footer>
+
+</div>
+
+<script>
+    const slides = [
+        {
+            image: "welcomepage.png",
+            caption: "Welcome page introducing the platform."
+        },
+        {
+            image: "loginpage.png",
+            caption: "Login page with authentication."
+        },
+        {
+            image: "dashboard.png",
+            caption: "Dashboard where users manage projects."
+        },
+        {
+            image: "publicview.png",
+            caption: "Public portfolio view."
+        },
+        {
+            image: "profile.png",
+            caption: "Profile editor with live preview."
+        },
+        {
+            image: "settings.png",
+            caption: "Settings page with account and dark mode."
+        }
+    ];
+
+    let current = 0;
+
+    function update() {
+        document.getElementById("carousel-image").src = slides[current].image;
+        document.getElementById("carousel-caption").textContent = slides[current].caption;
+        document.getElementById("slide-count").textContent =
+            (current + 1) + " / " + slides.length;
+    }
+
+    function nextSlide() {
+        current = (current + 1) % slides.length;
+        update();
+    }
+
+    function prevSlide() {
+        current = (current - 1 + slides.length) % slides.length;
+        update();
+    }
+
+    update();
+</script>
+
+</body>
+</html>
