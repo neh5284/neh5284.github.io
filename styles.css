@@ -24,7 +24,7 @@ main {
     flex: 1;
 }
 
-/* NAVIGATION (not fixed anymore, dark background) */
+/* NAVIGATION */
 .top-nav {
     width: 100%;
     background: #001e44;
@@ -33,7 +33,6 @@ main {
     justify-content: space-between;
     align-items: center;
     color: white;
-    position: relative;
 }
 
 .top-nav .logo {
@@ -55,34 +54,96 @@ main {
     border-bottom: 2px solid #7ec8e3;
 }
 
-/* FULL HERO (HOMEPAGE) */
+/* HERO */
 .hero {
-    background: #001e44;
+    position: relative;
+    overflow: hidden;
     color: white;
     min-height: 100vh;
-    padding-top: 3rem;
+    padding: 38vh 2rem 3rem;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     text-align: center;
-    padding-left: 2rem;
-    padding-right: 2rem;
+
+    background:
+            radial-gradient(circle at 20% 20%, rgba(126, 200, 227, 0.18), transparent 28%),
+            radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.08), transparent 30%),
+            radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.08) 1px, transparent 0),
+            linear-gradient(135deg, #001e44 0%, #003366 55%, #061b36 100%);
+    background-size: auto, auto, 34px 34px, auto;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(126, 200, 227, 0.22), transparent 65%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(6px);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 760px;
+    animation: fadeUp 0.8s ease-out;
 }
 
 .hero h1 {
-    font-size: clamp(2.5rem, 6vw, 3.5rem);
+    font-size: clamp(2.8rem, 6vw, 4rem);
     font-weight: 700;
     margin-bottom: 1rem;
+    letter-spacing: -1px;
 }
 
 .hero p {
     font-size: 1.2rem;
-    max-width: 600px;
+    max-width: 620px;
     color: #dbeafe;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* SHORT HERO (ABOUT / RESUME) */
+.subtitle {
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.hero .project-btn {
+    display: inline-block;
+    margin-top: 1.7rem;
+    padding: 0.8rem 1.5rem;
+    background: #7ec8e3;
+    color: #001e44;
+    border-radius: 10px;
+    font-weight: 700;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+}
+
+.hero .project-btn:hover {
+    background: #a5d8ef;
+    transform: translateY(-2px);
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* SHORT HERO (OTHER PAGES) */
 .short-hero {
     background: #001e44;
     color: white;
@@ -169,14 +230,14 @@ main {
     border-radius: 8px;
     text-decoration: none;
     font-weight: 500;
-    transition: background-color 0.3s ease;
+    transition: 0.3s ease;
 }
 
 .project-btn:hover {
     background-color: #1e293b;
 }
 
-/* ABOUT PAGE CONTENT */
+/* ABOUT PAGE */
 .about-content {
     display: flex;
     flex-direction: column;
@@ -197,7 +258,7 @@ main {
     border: 4px solid #7ec8e3;
 }
 
-/* RESUME PAGE BUTTON */
+/* RESUME */
 .resume-section {
     text-align: center;
     padding: 6rem 2rem;
@@ -228,6 +289,15 @@ footer {
     margin-top: auto;
 }
 
+footer a {
+    color: #7ec8e3;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: white;
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
     .project-card {
@@ -248,8 +318,13 @@ footer {
         margin-top: 1rem;
     }
 
+    .top-nav .nav-links a {
+        margin-left: 0;
+        margin-right: 1rem;
+    }
+
     .hero h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
 
     .hero p,
